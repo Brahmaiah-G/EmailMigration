@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -15,10 +15,10 @@ import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.MappedUsers;
-import com.cloudfuze.mail.service.DBConnectorService;
-import com.cloudfuze.mail.utils.MappingUtils;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.MappedUsers;
+import com.testing.mail.service.DBConnectorService;
+import com.testing.mail.utils.MappingUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
