@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
@@ -13,14 +13,14 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.cloudfuze.mail.constants.DBConstants;
-import com.cloudfuze.mail.repo.entities.CalendarMoveQueue;
-import com.cloudfuze.mail.repo.entities.CalendarPickingQueue;
-import com.cloudfuze.mail.repo.entities.EmailJobDetails;
-import com.cloudfuze.mail.repo.entities.EmailMoveQueue;
-import com.cloudfuze.mail.repo.entities.EmailPickingQueue;
-import com.cloudfuze.mail.repo.entities.PROCESS;
-import com.cloudfuze.mail.service.DBConnectorService;
+import com.testing.mail.constants.DBConstants;
+import com.testing.mail.repo.entities.CalendarMoveQueue;
+import com.testing.mail.repo.entities.CalendarPickingQueue;
+import com.testing.mail.repo.entities.EmailJobDetails;
+import com.testing.mail.repo.entities.EmailMoveQueue;
+import com.testing.mail.repo.entities.EmailPickingQueue;
+import com.testing.mail.repo.entities.PROCESS;
+import com.testing.mail.service.DBConnectorService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mongodb.client.AggregateIterable;
