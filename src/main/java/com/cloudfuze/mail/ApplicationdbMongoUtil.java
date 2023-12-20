@@ -1,4 +1,4 @@
-package com.cloudfuze.mail;
+package com.testing.mail;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
