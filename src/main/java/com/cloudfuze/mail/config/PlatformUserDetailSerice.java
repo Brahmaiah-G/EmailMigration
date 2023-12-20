@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.config;
+package com.testing.mail.config;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.cloudfuze.mail.repo.entities.PlatformUser;
-import com.cloudfuze.mail.repo.impl.MongoOpsManager;
+import com.testing.mail.repo.entities.PlatformUser;
+import com.testing.mail.repo.impl.MongoOpsManager;
 import com.github.f4b6a3.uuid.UuidCreator;
 
 @Service
