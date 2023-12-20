@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,37 +15,37 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.connectors.management.utility.ConnectorUtility;
-import com.cloudfuze.mail.connectors.microsoft.data.AttachmentsData;
-import com.cloudfuze.mail.constants.Const;
-import com.cloudfuze.mail.constants.ExceptionConstants;
-import com.cloudfuze.mail.contacts.dao.ContactsFlagInfo;
-import com.cloudfuze.mail.contacts.entities.Contacts;
-import com.cloudfuze.mail.contacts.entities.Emails;
-import com.cloudfuze.mail.contacts.entities.PhoneNumbers;
-import com.cloudfuze.mail.dao.entities.ConnectFlags;
-import com.cloudfuze.mail.dao.entities.EMailRules;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.dao.entities.EmailUserSettings;
-import com.cloudfuze.mail.dao.entities.PermissionCache;
-import com.cloudfuze.mail.dao.entities.UserGroups;
-import com.cloudfuze.mail.exceptions.MailMigrationException;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.Clouds.CLOUD_NAME;
-import com.cloudfuze.mail.repo.entities.ContactsInfo;
-import com.cloudfuze.mail.repo.entities.EmailFolderInfo;
-import com.cloudfuze.mail.repo.entities.EmailInfo;
-import com.cloudfuze.mail.repo.entities.EmailPickingQueue;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace;
-import com.cloudfuze.mail.repo.entities.GroupEmailDetails;
-import com.cloudfuze.mail.repo.entities.MailChangeIds;
-import com.cloudfuze.mail.repo.entities.MailChanges;
-import com.cloudfuze.mail.repo.entities.PROCESS;
-import com.cloudfuze.mail.repo.entities.ThreadControl;
-import com.cloudfuze.mail.service.DBConnectorService;
-import com.cloudfuze.mail.utils.ConvertionUtils;
-import com.cloudfuze.mail.utils.MappingUtils;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.connectors.management.utility.ConnectorUtility;
+import com.testing.mail.connectors.microsoft.data.AttachmentsData;
+import com.testing.mail.constants.Const;
+import com.testing.mail.constants.ExceptionConstants;
+import com.testing.mail.contacts.dao.ContactsFlagInfo;
+import com.testing.mail.contacts.entities.Contacts;
+import com.testing.mail.contacts.entities.Emails;
+import com.testing.mail.contacts.entities.PhoneNumbers;
+import com.testing.mail.dao.entities.ConnectFlags;
+import com.testing.mail.dao.entities.EMailRules;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.dao.entities.EmailUserSettings;
+import com.testing.mail.dao.entities.PermissionCache;
+import com.testing.mail.dao.entities.UserGroups;
+import com.testing.mail.exceptions.MailMigrationException;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.Clouds.CLOUD_NAME;
+import com.testing.mail.repo.entities.ContactsInfo;
+import com.testing.mail.repo.entities.EmailFolderInfo;
+import com.testing.mail.repo.entities.EmailInfo;
+import com.testing.mail.repo.entities.EmailPickingQueue;
+import com.testing.mail.repo.entities.EmailWorkSpace;
+import com.testing.mail.repo.entities.GroupEmailDetails;
+import com.testing.mail.repo.entities.MailChangeIds;
+import com.testing.mail.repo.entities.MailChanges;
+import com.testing.mail.repo.entities.PROCESS;
+import com.testing.mail.repo.entities.ThreadControl;
+import com.testing.mail.service.DBConnectorService;
+import com.testing.mail.utils.ConvertionUtils;
+import com.testing.mail.utils.MappingUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -54,7 +54,7 @@ import lombok.extern.slf4j.Slf4j;
 <b>Operations</b> : Picking the OeTime and delta Mails based on Mailfolder(Inbox,sent)
 </p>
  *Calling from, MailPickerScheduler.java
- *@see com.cloudfuze.mail.connectors.scheduler.MailPickerScheduler &#64;MailPickerScheduler
+ *@see com.testing.mail.connectors.scheduler.MailPickerScheduler &#64;MailPickerScheduler
  */
 
 @Slf4j
@@ -920,7 +920,7 @@ public class MailPickingV2 implements Callable<EmailFolderInfo> {
 			sourceGroupEmailDetails = new GroupEmailDetails();
 			sourceGroupEmailDetails.setUserId(emailInfo.getUserId());
 			sourceGroupEmailDetails.setAdminCloudId(emailWorkSpace.getFromAdminCloud());
-			sourceGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.NOT_PROCESSED);
+			sourceGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.NOT_PROCESSED);
 			sourceGroup = mailServiceFactory.getConnectorService(fromCloud.getCloudName()).getSingleGroupEmailDetails(fromCloud.getAdminCloudId(), email);
 			if(sourceGroup!=null) {
 				sourceGroupEmailDetails.setName(sourceGroup.getName());
@@ -939,12 +939,12 @@ public class MailPickingV2 implements Callable<EmailFolderInfo> {
 					if(!members.isEmpty()) {
 						sourceGroupEmailDetails.setMembers(members);
 						sourceGroup.setMembers(members);
-						sourceGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.PROCESSED);
+						sourceGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.PROCESSED);
 						connectorService.getCloudsRepoImpl().saveGroupDetails(Arrays.asList(sourceGroupEmailDetails));
 					}
 				}
 			} catch (Exception e) {
-				sourceGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.CONFLICT);
+				sourceGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.CONFLICT);
 				sourceGroupEmailDetails.setErrorDescription(ExceptionUtils.getStackTrace(e));
 			}finally {
 				connectorService.getCloudsRepoImpl().saveGroupDetails(Arrays.asList(sourceGroupEmailDetails));
@@ -966,7 +966,7 @@ public class MailPickingV2 implements Callable<EmailFolderInfo> {
 					destGroupEmailDetails = new GroupEmailDetails();
 					destGroupEmailDetails.setUserId(emailInfo.getUserId());
 					destGroupEmailDetails.setAdminCloudId(emailWorkSpace.getFromAdminCloud());
-					destGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.NOT_PROCESSED);
+					destGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.NOT_PROCESSED);
 					destGroup = mailServiceFactory.getConnectorService(toCloud.getCloudName()).getSingleGroupEmailDetails(toCloud.getAdminCloudId(), destEmailGroup+Const.ATTHERATE+fromAdminCloud.getEmail().split(Const.ATTHERATE)[1]);
 					if(null!=destGroup) {
 						destGroupEmailDetails.setName(destGroup.getName());
@@ -985,7 +985,7 @@ public class MailPickingV2 implements Callable<EmailFolderInfo> {
 								if(!members.isEmpty()) {
 									destGroupEmailDetails.setMembers(members);
 									destGroup.setMembers(members);
-									destGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.PROCESSED);
+									destGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.PROCESSED);
 									connectorService.getCloudsRepoImpl().saveGroupDetails(Arrays.asList(destGroupEmailDetails));
 								}
 							} catch (Exception e) {
@@ -1008,7 +1008,7 @@ public class MailPickingV2 implements Callable<EmailFolderInfo> {
 						}
 
 					} catch (Exception e) {
-						destGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.CONFLICT);
+						destGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.CONFLICT);
 						destGroupEmailDetails.setErrorDescription(ExceptionUtils.getStackTrace(e));
 					}finally {
 						connectorService.getCloudsRepoImpl().saveGroupDetails(Arrays.asList(destGroupEmailDetails));
@@ -1025,7 +1025,7 @@ public class MailPickingV2 implements Callable<EmailFolderInfo> {
 				if(destGroup!=null) {
 					return destGroup.getEmail();
 				}else {
-					sourceGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.CONFLICT);
+					sourceGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.CONFLICT);
 					sourceGroupEmailDetails.setErrorDescription("Can't able to create in Destination");
 					connectorService.getCloudsRepoImpl().saveGroupDetails(Arrays.asList(sourceGroupEmailDetails));
 				}
@@ -1315,7 +1315,7 @@ public class MailPickingV2 implements Callable<EmailFolderInfo> {
 					contactsInfo.setName(_contact.getFirstName()+":"+_contact.getLastName());
 					contactsInfo.setSourceId(_contact.getId());
 					contactsInfo.setPhoneNumbers(_contact.getPhoneNumbers().stream().map(PhoneNumbers::getPhoneNo).collect(Collectors.toList()));
-					contactsInfo.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.NOT_PROCESSED);
+					contactsInfo.setProcessStatus(com.testing.mail.repo.entities.PROCESS.NOT_PROCESSED);
 					contactsInfo.setJobId(emailWorkSpace.getJobId());
 					contactsInfos.add(contactsInfo);
 				}
