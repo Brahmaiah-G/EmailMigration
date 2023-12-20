@@ -1,4 +1,4 @@
-package com.cloudfuze.mail;
+package com.testing.mail;
 
 /**
  * @author BrahmaiahG
@@ -10,14 +10,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@ComponentScan("com.cloudfuze.*")
+@ComponentScan("com.testing.*")
 @EnableScheduling
-public class CloudFuzeEmailMigration {
+public class TestingEmailMigration {
 
 	public static void main(String[] args) {
 		// System.setProperty("java.net.debug", "true");
 		//Enable it for checking the internal debugging
-		SpringApplication.run(CloudFuzeEmailMigration.class, args);
+		SpringApplication.run(testingEmailMigration.class, args);
 	}
 	
 	// #Schedulers in AppConfig.java 
