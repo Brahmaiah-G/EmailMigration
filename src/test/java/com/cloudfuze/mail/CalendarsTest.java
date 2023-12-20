@@ -1,4 +1,4 @@
-package com.cloudfuze.mail;
+package com.testing.mail;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
