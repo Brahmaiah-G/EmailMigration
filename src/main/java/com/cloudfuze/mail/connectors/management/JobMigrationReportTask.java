@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 /**
  * @author BrahmaiahG
@@ -11,12 +11,12 @@ import java.util.concurrent.Callable;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.cloudfuze.mail.connectors.scheduler.WorkSpaceUpdater;
-import com.cloudfuze.mail.repo.entities.EmailJobDetails;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace;
-import com.cloudfuze.mail.repo.entities.GlobalReports;
-import com.cloudfuze.mail.service.DBConnectorService;
-import com.cloudfuze.mail.service.EmailService;
+import com.testing.mail.connectors.scheduler.WorkSpaceUpdater;
+import com.testing.mail.repo.entities.EmailJobDetails;
+import com.testing.mail.repo.entities.EmailWorkSpace;
+import com.testing.mail.repo.entities.GlobalReports;
+import com.testing.mail.service.DBConnectorService;
+import com.testing.mail.service.EmailService;
 
 import lombok.extern.slf4j.Slf4j;
 /**
