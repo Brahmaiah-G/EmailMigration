@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 /**
  * @author BrahmaiahG
@@ -10,12 +10,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.cloudfuze.mail.dao.entities.PermissionCache;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.EmailBatches;
-import com.cloudfuze.mail.repo.entities.MappedUsers;
-import com.cloudfuze.mail.rest.MailUserMgmtService;
-import com.cloudfuze.mail.service.DBConnectorService;
+import com.testing.mail.dao.entities.PermissionCache;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.EmailBatches;
+import com.testing.mail.repo.entities.MappedUsers;
+import com.testing.mail.rest.MailUserMgmtService;
+import com.testing.mail.service.DBConnectorService;
 
 import lombok.extern.slf4j.Slf4j;
 
