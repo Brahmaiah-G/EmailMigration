@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<!-- <property scope="context" name="LOG_DIR" value="/var/log" /> -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MMM-dd HH:mm:ss.SSS} [%thread] %-5level - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/emailMigration.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/mail.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %msg - [%c{0}:%L]%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Application Loggers -->
+    <logger name="com.cloudfuze" level="debug"/>
+
+    <!-- 3rdparty Loggers -->
+    <logger name="org.springframework.core" level="error"/>
+    <logger name="org.springframework.beans" level="error"/>
+    <logger name="org.springframework.context" level="error"/>
+    <logger name="org.springframework.web" level="debug"/><!-- change to error and final build -->
+    <!-- <logger name="org.hibernate" level="error"/> -->
+    <root level="info">        
+        <appender-ref ref="stdout"/> --><!--  Temp for dev changed log loc to console-->
+    </root>
+</configuration>

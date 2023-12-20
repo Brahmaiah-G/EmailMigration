@@ -1,0 +1,12 @@
+JobName,Job Created On-2023-11-28T23:33:32.390
+Move Workspace Id ,6566e94ce6c6196a987df5c4,Start Time ,2023-11-29T13:03:32.405,
+User Email Id ,rserra@kmicro.com,End Time ,2023-11-30T00:43:47.629,
+Source Mailbox,deron@proconsupplies.com,Destination Mailbox,deron@test365.proconsupplies.com,
+Migration Status ,PROCESSED_WITH_CONFLICTS,
+
+Folder,Total Items,Migrated,Failed,Attachments Size in Bytes
+Sent Items,3387,4,0,12532
+Inbox,7688,6,0,54341
+Deleted Items,17,1,0,35854
+Drafts,0,0,0,0
+Junk Emails,0,0,0,0
