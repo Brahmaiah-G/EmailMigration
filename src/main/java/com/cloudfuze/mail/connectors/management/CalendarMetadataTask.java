@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.util.List;
 
@@ -7,17 +7,17 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.BeanUtils;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.connectors.impl.OutLookMailConnector;
-import com.cloudfuze.mail.connectors.microsoft.data.AttachmentsData;
-import com.cloudfuze.mail.connectors.microsoft.data.CalenderViewValue;
-import com.cloudfuze.mail.dao.entities.CalenderFlags;
-import com.cloudfuze.mail.repo.entities.CalenderInfo;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace.PROCESS;
-import com.cloudfuze.mail.repo.entities.EventsInfo;
-import com.cloudfuze.mail.service.DBConnectorService;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.connectors.impl.OutLookMailConnector;
+import com.testing.mail.connectors.microsoft.data.AttachmentsData;
+import com.testing.mail.connectors.microsoft.data.CalenderViewValue;
+import com.testing.mail.dao.entities.CalenderFlags;
+import com.testing.mail.repo.entities.CalenderInfo;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.EmailWorkSpace;
+import com.testing.mail.repo.entities.EmailWorkSpace.PROCESS;
+import com.testing.mail.repo.entities.EventsInfo;
+import com.testing.mail.service.DBConnectorService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,7 +29,7 @@ public class CalendarMetadataTask implements Runnable{
 	EmailWorkSpace emailWorkSpace;
 	EventsInfo emailInfo;
 
-	com.cloudfuze.mail.repo.entities.EventsInfo.PROCESS processStatus = com.cloudfuze.mail.repo.entities.EventsInfo.PROCESS.METADATA_CONFLICT;
+	com.testing.mail.repo.entities.EventsInfo.PROCESS processStatus = com.testing.mail.repo.entities.EventsInfo.PROCESS.METADATA_CONFLICT;
 
 	public CalendarMetadataTask(MailServiceFactory mailServiceFactory, DBConnectorService connectorService,
 			EmailWorkSpace emailWorkSpace, EventsInfo emailInfo) {
@@ -87,7 +87,7 @@ public class CalendarMetadataTask implements Runnable{
 			if(metadata!=null) {
 				emailInfo.setUpdatedMetadata(metadata.getUpdatedMetadata());
 				emailInfo.setDestId(metadata.getId());
-				processStatus = com.cloudfuze.mail.repo.entities.EventsInfo.PROCESS.PROCESSED;
+				processStatus = com.testing.mail.repo.entities.EventsInfo.PROCESS.PROCESSED;
 				checkAndDeleteCalendarEvent();
 				initiateEventCreationForExternalUser(emailFlagsInfo.getAttachments());
 				if(!emailInfo.getOrganizer().equals(emailWorkSpace.getToMailId())) {
@@ -104,7 +104,7 @@ public class CalendarMetadataTask implements Runnable{
 				}
 			}
 		}catch(Exception e) {
-			processStatus = com.cloudfuze.mail.repo.entities.EventsInfo.PROCESS.METADATA_CONFLICT;
+			processStatus = com.testing.mail.repo.entities.EventsInfo.PROCESS.METADATA_CONFLICT;
 			emailInfo.setRetryCount(emailInfo.getRetryCount()+1);
 			emailInfo.setErrorDescription(ExceptionUtils.getStackTrace(e));
 		}finally{
