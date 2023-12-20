@@ -1,12 +1,12 @@
-package com.cloudfuze.mail.connectors.factory;
+package com.testing.mail.connectors.factory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.cloudfuze.mail.connectors.MailConnectors;
-import com.cloudfuze.mail.connectors.impl.GMailConnector;
-import com.cloudfuze.mail.connectors.impl.OutLookMailConnector;
-import com.cloudfuze.mail.repo.entities.Clouds.CLOUD_NAME;
+import com.testing.mail.connectors.MailConnectors;
+import com.testing.mail.connectors.impl.GMailConnector;
+import com.testing.mail.connectors.impl.OutLookMailConnector;
+import com.testing.mail.repo.entities.Clouds.CLOUD_NAME;
 
 import lombok.extern.slf4j.Slf4j;
 
