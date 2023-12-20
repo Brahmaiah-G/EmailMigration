@@ -1,10 +1,10 @@
-package com.cloudfuze.mail.config;
+package com.testing.mail.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.cloudfuze.mail.dao.impl.AppMongoOpsManager;
+import com.testing.mail.dao.impl.AppMongoOpsManager;
 import com.sendgrid.SendGrid;
 
 @Configuration
