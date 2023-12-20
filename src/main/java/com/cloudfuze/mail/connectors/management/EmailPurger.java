@@ -1,17 +1,17 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.connectors.impl.OutLookMailConnector;
-import com.cloudfuze.mail.connectors.microsoft.data.Value;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.repo.entities.CalenderInfo.PROCESS;
-import com.cloudfuze.mail.repo.entities.EmailInfo;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace;
-import com.cloudfuze.mail.service.DBConnectorService;
-import com.cloudfuze.mail.utils.MappingUtils.MAIL_FOLDERS;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.connectors.impl.OutLookMailConnector;
+import com.testing.mail.connectors.microsoft.data.Value;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.repo.entities.CalenderInfo.PROCESS;
+import com.testing.mail.repo.entities.EmailInfo;
+import com.testing.mail.repo.entities.EmailWorkSpace;
+import com.testing.mail.service.DBConnectorService;
+import com.testing.mail.utils.MappingUtils.MAIL_FOLDERS;
 
 import lombok.extern.slf4j.Slf4j;
 
