@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,27 +15,27 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.connectors.microsoft.data.AttachmentsData;
-import com.cloudfuze.mail.constants.Const;
-import com.cloudfuze.mail.constants.ExceptionConstants;
-import com.cloudfuze.mail.dao.entities.CalenderFlags;
-import com.cloudfuze.mail.dao.entities.ConnectFlags;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.dao.entities.PermissionCache;
-import com.cloudfuze.mail.dao.entities.UserGroups;
-import com.cloudfuze.mail.exceptions.MailMigrationException;
-import com.cloudfuze.mail.repo.entities.CalenderInfo;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.Clouds.CLOUD_NAME;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace;
-import com.cloudfuze.mail.repo.entities.GroupEmailDetails;
-import com.cloudfuze.mail.repo.entities.MailChangeIds;
-import com.cloudfuze.mail.repo.entities.MailChanges;
-import com.cloudfuze.mail.service.DBConnectorService;
-import com.cloudfuze.mail.utils.ConvertionUtils;
-import com.cloudfuze.mail.utils.EventRangeUtils;
-import com.cloudfuze.mail.utils.TimeUtils;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.connectors.microsoft.data.AttachmentsData;
+import com.testing.mail.constants.Const;
+import com.testing.mail.constants.ExceptionConstants;
+import com.testing.mail.dao.entities.CalenderFlags;
+import com.testing.mail.dao.entities.ConnectFlags;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.dao.entities.PermissionCache;
+import com.testing.mail.dao.entities.UserGroups;
+import com.testing.mail.exceptions.MailMigrationException;
+import com.testing.mail.repo.entities.CalenderInfo;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.Clouds.CLOUD_NAME;
+import com.testing.mail.repo.entities.EmailWorkSpace;
+import com.testing.mail.repo.entities.GroupEmailDetails;
+import com.testing.mail.repo.entities.MailChangeIds;
+import com.testing.mail.repo.entities.MailChanges;
+import com.testing.mail.service.DBConnectorService;
+import com.testing.mail.utils.ConvertionUtils;
+import com.testing.mail.utils.EventRangeUtils;
+import com.testing.mail.utils.TimeUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -635,7 +635,7 @@ public class CalendarChangesPickerTask implements Callable<Object> {
 			sourceGroupEmailDetails = new GroupEmailDetails();
 			sourceGroupEmailDetails.setUserId(emailWorkSpace.getUserId());
 			sourceGroupEmailDetails.setAdminCloudId(emailWorkSpace.getFromAdminCloud());
-			sourceGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.NOT_PROCESSED);
+			sourceGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.NOT_PROCESSED);
 			sourceGroup = mailServiceFactory.getConnectorService(fromCloud.getCloudName()).getSingleGroupEmailDetails(fromCloud.getAdminCloudId(), email);
 			if(sourceGroup!=null) {
 				sourceGroupEmailDetails.setName(sourceGroup.getName());
@@ -654,12 +654,12 @@ public class CalendarChangesPickerTask implements Callable<Object> {
 					if(!members.isEmpty()) {
 						sourceGroupEmailDetails.setMembers(members);
 						sourceGroup.setMembers(members);
-						sourceGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.PROCESSED);
+						sourceGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.PROCESSED);
 						connectorService.getCloudsRepoImpl().saveGroupDetails(Arrays.asList(sourceGroupEmailDetails));
 					}
 				}
 			} catch (Exception e) {
-				sourceGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.CONFLICT);
+				sourceGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.CONFLICT);
 				sourceGroupEmailDetails.setErrorDescription(ExceptionUtils.getStackTrace(e));
 			}finally {
 				connectorService.getCloudsRepoImpl().saveGroupDetails(Arrays.asList(sourceGroupEmailDetails));
@@ -681,7 +681,7 @@ public class CalendarChangesPickerTask implements Callable<Object> {
 					destGroupEmailDetails = new GroupEmailDetails();
 					destGroupEmailDetails.setUserId(emailWorkSpace.getUserId());
 					destGroupEmailDetails.setAdminCloudId(emailWorkSpace.getFromAdminCloud());
-					destGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.NOT_PROCESSED);
+					destGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.NOT_PROCESSED);
 					destGroup = mailServiceFactory.getConnectorService(toCloud.getCloudName()).getSingleGroupEmailDetails(toCloud.getAdminCloudId(), destEmailGroup+Const.ATTHERATE+fromAdminCloud.getEmail().split(Const.ATTHERATE)[1]);
 					if(null!=destGroup) {
 						destGroupEmailDetails.setName(destGroup.getName());
@@ -700,7 +700,7 @@ public class CalendarChangesPickerTask implements Callable<Object> {
 								if(!members.isEmpty()) {
 									destGroupEmailDetails.setMembers(members);
 									destGroup.setMembers(members);
-									destGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.PROCESSED);
+									destGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.PROCESSED);
 									connectorService.getCloudsRepoImpl().saveGroupDetails(Arrays.asList(destGroupEmailDetails));
 								}
 							} catch (Exception e) {
@@ -723,7 +723,7 @@ public class CalendarChangesPickerTask implements Callable<Object> {
 						}
 
 					} catch (Exception e) {
-						destGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.CONFLICT);
+						destGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.CONFLICT);
 						destGroupEmailDetails.setErrorDescription(ExceptionUtils.getStackTrace(e));
 					}finally {
 						connectorService.getCloudsRepoImpl().saveGroupDetails(Arrays.asList(destGroupEmailDetails));
@@ -740,7 +740,7 @@ public class CalendarChangesPickerTask implements Callable<Object> {
 				if(destGroup!=null) {
 					return destGroup.getEmail();
 				}else {
-					sourceGroupEmailDetails.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.CONFLICT);
+					sourceGroupEmailDetails.setProcessStatus(com.testing.mail.repo.entities.PROCESS.CONFLICT);
 					sourceGroupEmailDetails.setErrorDescription("Can't able to create in Destination");
 					connectorService.getCloudsRepoImpl().saveGroupDetails(Arrays.asList(sourceGroupEmailDetails));
 				}
