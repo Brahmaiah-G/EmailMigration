@@ -1,16 +1,16 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.dao.entities.UserGroups;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.GroupEmailDetails;
-import com.cloudfuze.mail.repo.entities.PROCESS;
-import com.cloudfuze.mail.repo.impl.CloudsRepoImpl;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.dao.entities.UserGroups;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.GroupEmailDetails;
+import com.testing.mail.repo.entities.PROCESS;
+import com.testing.mail.repo.impl.CloudsRepoImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
