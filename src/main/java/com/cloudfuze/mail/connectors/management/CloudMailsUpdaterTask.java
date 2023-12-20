@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,13 +7,13 @@ import java.util.concurrent.Callable;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.exceptions.handler.ThreadExceptionHandler;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.EmailInfo;
-import com.cloudfuze.mail.repo.entities.Clouds.CLOUD_NAME;
-import com.cloudfuze.mail.repo.impl.CloudsRepoImpl;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.exceptions.handler.ThreadExceptionHandler;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.EmailInfo;
+import com.testing.mail.repo.entities.Clouds.CLOUD_NAME;
+import com.testing.mail.repo.impl.CloudsRepoImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
