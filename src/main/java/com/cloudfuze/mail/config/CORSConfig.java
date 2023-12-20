@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.config;
+package com.testing.mail.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
