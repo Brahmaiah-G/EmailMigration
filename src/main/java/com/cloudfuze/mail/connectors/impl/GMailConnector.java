@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.impl;
+package com.testing.mail.connectors.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -44,79 +44,79 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.cloudfuze.mail.connectors.MailConnectors;
-import com.cloudfuze.mail.connectors.google.data.AttachMents;
-import com.cloudfuze.mail.connectors.google.data.Attachment;
-import com.cloudfuze.mail.connectors.google.data.Attendee;
-import com.cloudfuze.mail.connectors.google.data.CalendarsList;
-import com.cloudfuze.mail.connectors.google.data.Connection;
-import com.cloudfuze.mail.connectors.google.data.ContactInfo;
-import com.cloudfuze.mail.connectors.google.data.DelegateSettings;
-import com.cloudfuze.mail.connectors.google.data.DeltaMails;
-import com.cloudfuze.mail.connectors.google.data.Domain;
-import com.cloudfuze.mail.connectors.google.data.DomainsList;
-import com.cloudfuze.mail.connectors.google.data.DriveAbout;
-import com.cloudfuze.mail.connectors.google.data.EmailFolders;
-import com.cloudfuze.mail.connectors.google.data.EntryPoint;
-import com.cloudfuze.mail.connectors.google.data.EventItem;
-import com.cloudfuze.mail.connectors.google.data.EventsList;
-import com.cloudfuze.mail.connectors.google.data.FileMetadata;
-import com.cloudfuze.mail.connectors.google.data.Filter;
-import com.cloudfuze.mail.connectors.google.data.ForwardSettings;
-import com.cloudfuze.mail.connectors.google.data.Group;
-import com.cloudfuze.mail.connectors.google.data.GroupsList;
-import com.cloudfuze.mail.connectors.google.data.History;
-import com.cloudfuze.mail.connectors.google.data.Item;
-import com.cloudfuze.mail.connectors.google.data.Label;
-import com.cloudfuze.mail.connectors.google.data.MailBoxRules;
-import com.cloudfuze.mail.connectors.google.data.MailThreads;
-import com.cloudfuze.mail.connectors.google.data.MailValue;
-import com.cloudfuze.mail.connectors.google.data.MembersList;
-import com.cloudfuze.mail.connectors.google.data.Message;
-import com.cloudfuze.mail.connectors.google.data.MessagesAdded;
-import com.cloudfuze.mail.connectors.google.data.SendAs;
-import com.cloudfuze.mail.connectors.google.data.SendAsSettings;
-import com.cloudfuze.mail.connectors.google.data.ThreadMessages;
-import com.cloudfuze.mail.connectors.google.data.TokenResponse;
-import com.cloudfuze.mail.connectors.google.data.User;
-import com.cloudfuze.mail.connectors.google.data.UserInfo;
-import com.cloudfuze.mail.connectors.impl.helper.GmailHelper;
-import com.cloudfuze.mail.connectors.management.utility.ConnectorUtility;
-import com.cloudfuze.mail.connectors.microsoft.data.AttachmentsData;
-import com.cloudfuze.mail.constants.Const;
-import com.cloudfuze.mail.constants.ExceptionConstants;
-import com.cloudfuze.mail.contacts.dao.ContactsFlagInfo;
-import com.cloudfuze.mail.contacts.entities.Contacts;
-import com.cloudfuze.mail.contacts.entities.Emails;
-import com.cloudfuze.mail.dao.entities.CalenderFlags;
-import com.cloudfuze.mail.dao.entities.ConnectFlags;
-import com.cloudfuze.mail.dao.entities.EMailRules;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.dao.entities.EmailUserSettings;
-import com.cloudfuze.mail.dao.entities.ForwardingAddresses;
-import com.cloudfuze.mail.dao.entities.RateLimitConfigurer;
-import com.cloudfuze.mail.dao.entities.UserAutoForwarding;
-import com.cloudfuze.mail.dao.entities.UserGroups;
-import com.cloudfuze.mail.dao.entities.UserImap;
-import com.cloudfuze.mail.dao.entities.UserPopSetting;
-import com.cloudfuze.mail.dao.entities.UserVocation;
-import com.cloudfuze.mail.dao.impl.AppMongoOpsManager;
-import com.cloudfuze.mail.exceptions.ContactCreationException;
-import com.cloudfuze.mail.exceptions.MailCreationException;
-import com.cloudfuze.mail.exceptions.MailMigrationException;
-import com.cloudfuze.mail.repo.entities.CalenderInfo;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.Clouds.CLOUD_NAME;
-import com.cloudfuze.mail.repo.entities.EmailInfo;
-import com.cloudfuze.mail.repo.entities.VendorOAuthCredential;
-import com.cloudfuze.mail.repo.impl.CloudsRepoImpl;
-import com.cloudfuze.mail.repo.impl.VendorOAuthCredentialImpl;
-import com.cloudfuze.mail.utils.ConnectUtils;
-import com.cloudfuze.mail.utils.EmailUtils;
-import com.cloudfuze.mail.utils.HttpUtils;
-import com.cloudfuze.mail.utils.MappingUtils;
-import com.cloudfuze.mail.utils.TimeUtils;
-import com.cloudfuze.mail.utils.UploadSession;
+import com.testing.mail.connectors.MailConnectors;
+import com.testing.mail.connectors.google.data.AttachMents;
+import com.testing.mail.connectors.google.data.Attachment;
+import com.testing.mail.connectors.google.data.Attendee;
+import com.testing.mail.connectors.google.data.CalendarsList;
+import com.testing.mail.connectors.google.data.Connection;
+import com.testing.mail.connectors.google.data.ContactInfo;
+import com.testing.mail.connectors.google.data.DelegateSettings;
+import com.testing.mail.connectors.google.data.DeltaMails;
+import com.testing.mail.connectors.google.data.Domain;
+import com.testing.mail.connectors.google.data.DomainsList;
+import com.testing.mail.connectors.google.data.DriveAbout;
+import com.testing.mail.connectors.google.data.EmailFolders;
+import com.testing.mail.connectors.google.data.EntryPoint;
+import com.testing.mail.connectors.google.data.EventItem;
+import com.testing.mail.connectors.google.data.EventsList;
+import com.testing.mail.connectors.google.data.FileMetadata;
+import com.testing.mail.connectors.google.data.Filter;
+import com.testing.mail.connectors.google.data.ForwardSettings;
+import com.testing.mail.connectors.google.data.Group;
+import com.testing.mail.connectors.google.data.GroupsList;
+import com.testing.mail.connectors.google.data.History;
+import com.testing.mail.connectors.google.data.Item;
+import com.testing.mail.connectors.google.data.Label;
+import com.testing.mail.connectors.google.data.MailBoxRules;
+import com.testing.mail.connectors.google.data.MailThreads;
+import com.testing.mail.connectors.google.data.MailValue;
+import com.testing.mail.connectors.google.data.MembersList;
+import com.testing.mail.connectors.google.data.Message;
+import com.testing.mail.connectors.google.data.MessagesAdded;
+import com.testing.mail.connectors.google.data.SendAs;
+import com.testing.mail.connectors.google.data.SendAsSettings;
+import com.testing.mail.connectors.google.data.ThreadMessages;
+import com.testing.mail.connectors.google.data.TokenResponse;
+import com.testing.mail.connectors.google.data.User;
+import com.testing.mail.connectors.google.data.UserInfo;
+import com.testing.mail.connectors.impl.helper.GmailHelper;
+import com.testing.mail.connectors.management.utility.ConnectorUtility;
+import com.testing.mail.connectors.microsoft.data.AttachmentsData;
+import com.testing.mail.constants.Const;
+import com.testing.mail.constants.ExceptionConstants;
+import com.testing.mail.contacts.dao.ContactsFlagInfo;
+import com.testing.mail.contacts.entities.Contacts;
+import com.testing.mail.contacts.entities.Emails;
+import com.testing.mail.dao.entities.CalenderFlags;
+import com.testing.mail.dao.entities.ConnectFlags;
+import com.testing.mail.dao.entities.EMailRules;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.dao.entities.EmailUserSettings;
+import com.testing.mail.dao.entities.ForwardingAddresses;
+import com.testing.mail.dao.entities.RateLimitConfigurer;
+import com.testing.mail.dao.entities.UserAutoForwarding;
+import com.testing.mail.dao.entities.UserGroups;
+import com.testing.mail.dao.entities.UserImap;
+import com.testing.mail.dao.entities.UserPopSetting;
+import com.testing.mail.dao.entities.UserVocation;
+import com.testing.mail.dao.impl.AppMongoOpsManager;
+import com.testing.mail.exceptions.ContactCreationException;
+import com.testing.mail.exceptions.MailCreationException;
+import com.testing.mail.exceptions.MailMigrationException;
+import com.testing.mail.repo.entities.CalenderInfo;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.Clouds.CLOUD_NAME;
+import com.testing.mail.repo.entities.EmailInfo;
+import com.testing.mail.repo.entities.VendorOAuthCredential;
+import com.testing.mail.repo.impl.CloudsRepoImpl;
+import com.testing.mail.repo.impl.VendorOAuthCredentialImpl;
+import com.testing.mail.utils.ConnectUtils;
+import com.testing.mail.utils.EmailUtils;
+import com.testing.mail.utils.HttpUtils;
+import com.testing.mail.utils.MappingUtils;
+import com.testing.mail.utils.TimeUtils;
+import com.testing.mail.utils.UploadSession;
 import com.google.gson.Gson;
 
 import lombok.extern.slf4j.Slf4j;
@@ -126,7 +126,7 @@ import lombok.extern.slf4j.Slf4j;
  * <p>
  * Parent Interface <b> {@link MailConnectors} </b>
  * </p>
- * @see com.cloudfuze.mail.connectors.MailConnectors &#64;MailConnectors
+ * @see com.testing.mail.connectors.MailConnectors &#64;MailConnectors
  */
 
 
@@ -257,7 +257,7 @@ public class GMailConnector  implements MailConnectors {
 		List<String> dups = new ArrayList<>();
 		if(mailsList!=null && mailsList.getThreads()!=null &&!mailsList.getThreads().isEmpty()) {
 			emailFlagsInfo.setNextPageToken(mailsList.getNextPageToken());
-			for(com.cloudfuze.mail.connectors.google.data.Thread message : mailsList.getThreads()) {
+			for(com.testing.mail.connectors.google.data.Thread message : mailsList.getThreads()) {
 				try {
 					if(message.getId()!=null ) {
 						ThreadMessages mailValues = null;
@@ -341,7 +341,7 @@ public class GMailConnector  implements MailConnectors {
 		List<String> dups = new ArrayList<>();
 		if(mailsList!=null && mailsList.getThreads()!=null &&!mailsList.getThreads().isEmpty()) {
 			emailFlagsInfo.setNextPageToken(mailsList.getNextPageToken());
-			for(com.cloudfuze.mail.connectors.google.data.Thread message : mailsList.getThreads()) {
+			for(com.testing.mail.connectors.google.data.Thread message : mailsList.getThreads()) {
 				try {
 					if(message.getId()!=null ) {
 						ThreadMessages mailValues = null;
