@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.config;
+package com.testing.mail.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,12 +21,12 @@ public class SwaggerConfig{
 	  @Bean
 	  public OpenAPI springShopOpenAPI() {
 	    return (new OpenAPI())
-	      .info((new Info()).title("CloudFuze Connect API")
-	        .description("CloudFuze Connect - A SaaS Management Platform")
+	      .info((new Info()).title("testing Connect API")
+	        .description("testing Connect - A SaaS Management Platform")
 	        .version("v1.0")
-	        .license((new License()).name("CloudFuze LLC").url("https://www.cloudfuze.com")))
+	        .license((new License()).name("testing LLC").url("https://www.testing.com")))
 	      	.externalDocs((new ExternalDocumentation())
-	        .description("CloudFuze Connect Documentation")
-	        .url("https://www.cloudfuze.com/blog/"));
+	        .description("testing Connect Documentation")
+	        .url("https://www.testing.com/blog/"));
 	  }
 }
