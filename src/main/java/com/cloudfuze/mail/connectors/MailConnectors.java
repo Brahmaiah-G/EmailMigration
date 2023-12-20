@@ -1,31 +1,31 @@
-package com.cloudfuze.mail.connectors;
+package com.testing.mail.connectors;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import com.cloudfuze.mail.connectors.microsoft.data.AttachmentsData;
-import com.cloudfuze.mail.contacts.dao.ContactsFlagInfo;
-import com.cloudfuze.mail.contacts.entities.Contacts;
-import com.cloudfuze.mail.dao.entities.CalenderFlags;
-import com.cloudfuze.mail.dao.entities.ConnectFlags;
-import com.cloudfuze.mail.dao.entities.EMailRules;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.dao.entities.EmailUserSettings;
-import com.cloudfuze.mail.dao.entities.UserGroups;
-import com.cloudfuze.mail.exceptions.MailCreationException;
-import com.cloudfuze.mail.exceptions.MailMigrationException;
-import com.cloudfuze.mail.repo.entities.CalenderInfo;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.EmailInfo;
+import com.testing.mail.connectors.microsoft.data.AttachmentsData;
+import com.testing.mail.contacts.dao.ContactsFlagInfo;
+import com.testing.mail.contacts.entities.Contacts;
+import com.testing.mail.dao.entities.CalenderFlags;
+import com.testing.mail.dao.entities.ConnectFlags;
+import com.testing.mail.dao.entities.EMailRules;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.dao.entities.EmailUserSettings;
+import com.testing.mail.dao.entities.UserGroups;
+import com.testing.mail.exceptions.MailCreationException;
+import com.testing.mail.exceptions.MailMigrationException;
+import com.testing.mail.repo.entities.CalenderInfo;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.EmailInfo;
 
 /**
  * Parent Interface for the Connectors
  * <pre>
  *  Ex : GMailConnector , OutLookMailConnector
  * </pre>
- * @see com.cloudfuze.mail.connectors.impl.GMailConnector &#64;GMailConnector
- * @see com.cloudfuze.mail.connectors.impl.OutLookMailConnector &#64;OutLookMailConnector
+ * @see com.testing.mail.connectors.impl.GMailConnector &#64;GMailConnector
+ * @see com.testing.mail.connectors.impl.OutLookMailConnector &#64;OutLookMailConnector
 */
 
 public interface MailConnectors {
