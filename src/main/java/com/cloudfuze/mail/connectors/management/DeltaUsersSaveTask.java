@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,21 +10,21 @@ import java.util.concurrent.Callable;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.connectors.impl.GMailConnector;
-import com.cloudfuze.mail.connectors.impl.OutLookMailConnector;
-import com.cloudfuze.mail.connectors.impl.helper.GmailHelper;
-import com.cloudfuze.mail.constants.ExceptionConstants;
-import com.cloudfuze.mail.dao.entities.ConnectFlags;
-import com.cloudfuze.mail.dao.impl.AppMongoOpsManager;
-import com.cloudfuze.mail.exceptions.handler.ThreadExceptionHandler;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.EmailInfo;
-import com.cloudfuze.mail.repo.entities.Clouds.CLOUD_NAME;
-import com.cloudfuze.mail.repo.entities.OAuthKey;
-import com.cloudfuze.mail.repo.entities.VendorOAuthCredential;
-import com.cloudfuze.mail.repo.impl.CloudsRepoImpl;
-import com.cloudfuze.mail.repo.impl.VendorOAuthCredentialImpl;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.connectors.impl.GMailConnector;
+import com.testing.mail.connectors.impl.OutLookMailConnector;
+import com.testing.mail.connectors.impl.helper.GmailHelper;
+import com.testing.mail.constants.ExceptionConstants;
+import com.testing.mail.dao.entities.ConnectFlags;
+import com.testing.mail.dao.impl.AppMongoOpsManager;
+import com.testing.mail.exceptions.handler.ThreadExceptionHandler;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.EmailInfo;
+import com.testing.mail.repo.entities.Clouds.CLOUD_NAME;
+import com.testing.mail.repo.entities.OAuthKey;
+import com.testing.mail.repo.entities.VendorOAuthCredential;
+import com.testing.mail.repo.impl.CloudsRepoImpl;
+import com.testing.mail.repo.impl.VendorOAuthCredentialImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
