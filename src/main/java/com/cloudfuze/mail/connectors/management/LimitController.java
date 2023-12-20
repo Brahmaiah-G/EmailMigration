@@ -1,13 +1,13 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import com.cloudfuze.mail.repo.entities.EmailInfo.PROCESS;
-import com.cloudfuze.mail.repo.entities.ThreadControl;
-import com.cloudfuze.mail.service.DBConnectorService;
-import com.cloudfuze.mail.utils.HttpUtils;
+import com.testing.mail.repo.entities.EmailInfo.PROCESS;
+import com.testing.mail.repo.entities.ThreadControl;
+import com.testing.mail.service.DBConnectorService;
+import com.testing.mail.utils.HttpUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
