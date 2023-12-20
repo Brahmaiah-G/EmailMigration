@@ -20,7 +20,7 @@
     </appender>
 
     <!-- Application Loggers -->
-    <logger name="com.cloudfuze" level="debug"/>
+    <logger name="com.testing" level="debug"/>
 
     <!-- 3rdparty Loggers -->
     <logger name="org.springframework.core" level="error"/>
