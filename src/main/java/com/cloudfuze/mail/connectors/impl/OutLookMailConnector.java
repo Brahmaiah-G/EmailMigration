@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.impl;
+package com.testing.mail.connectors.impl;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -30,57 +30,57 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.cloudfuze.mail.connectors.MailConnectors;
-import com.cloudfuze.mail.connectors.impl.helper.OutlookHelper;
-import com.cloudfuze.mail.connectors.microsoft.data.AttachmentsData;
-import com.cloudfuze.mail.connectors.microsoft.data.BatchRequests;
-import com.cloudfuze.mail.connectors.microsoft.data.CalendarPermissions;
-import com.cloudfuze.mail.connectors.microsoft.data.CalenderValue;
-import com.cloudfuze.mail.connectors.microsoft.data.CalenderViewValue;
-import com.cloudfuze.mail.connectors.microsoft.data.CalenderViews;
-import com.cloudfuze.mail.connectors.microsoft.data.Calenders;
-import com.cloudfuze.mail.connectors.microsoft.data.ContactsList;
-import com.cloudfuze.mail.connectors.microsoft.data.DomainsList;
-import com.cloudfuze.mail.connectors.microsoft.data.EmailAttachMentValue;
-import com.cloudfuze.mail.connectors.microsoft.data.EmailAttachMents;
-import com.cloudfuze.mail.connectors.microsoft.data.EmailFolders;
-import com.cloudfuze.mail.connectors.microsoft.data.EmailFoldersValue;
-import com.cloudfuze.mail.connectors.microsoft.data.EmailList;
-import com.cloudfuze.mail.connectors.microsoft.data.GroupMembers;
-import com.cloudfuze.mail.connectors.microsoft.data.GroupValue;
-import com.cloudfuze.mail.connectors.microsoft.data.GroupsList;
-import com.cloudfuze.mail.connectors.microsoft.data.MailBoxSettings;
-import com.cloudfuze.mail.connectors.microsoft.data.MailRules;
-import com.cloudfuze.mail.connectors.microsoft.data.MailValue;
-import com.cloudfuze.mail.connectors.microsoft.data.MemberList;
-import com.cloudfuze.mail.connectors.microsoft.data.MemberValueVO;
-import com.cloudfuze.mail.connectors.microsoft.data.RefreshTokenResult;
-import com.cloudfuze.mail.connectors.microsoft.data.Response;
-import com.cloudfuze.mail.connectors.microsoft.data.Value;
-import com.cloudfuze.mail.constants.Const;
-import com.cloudfuze.mail.constants.ExceptionConstants;
-import com.cloudfuze.mail.contacts.dao.ContactsFlagInfo;
-import com.cloudfuze.mail.contacts.entities.Contacts;
-import com.cloudfuze.mail.dao.entities.CalenderFlags;
-import com.cloudfuze.mail.dao.entities.ConnectFlags;
-import com.cloudfuze.mail.dao.entities.EMailRules;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.dao.entities.EmailUserSettings;
-import com.cloudfuze.mail.dao.entities.RateLimitConfigurer;
-import com.cloudfuze.mail.dao.entities.UserGroups;
-import com.cloudfuze.mail.dao.impl.AppMongoOpsManager;
-import com.cloudfuze.mail.exceptions.MailCreationException;
-import com.cloudfuze.mail.exceptions.MailMigrationException;
-import com.cloudfuze.mail.repo.entities.CalenderInfo;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.Clouds.CLOUD_NAME;
-import com.cloudfuze.mail.repo.entities.EmailInfo;
-import com.cloudfuze.mail.repo.entities.OAuthKey;
-import com.cloudfuze.mail.repo.entities.VendorOAuthCredential;
-import com.cloudfuze.mail.repo.impl.CloudsRepoImpl;
-import com.cloudfuze.mail.repo.impl.VendorOAuthCredentialImpl;
-import com.cloudfuze.mail.utils.ConnectUtils;
-import com.cloudfuze.mail.utils.ConvertionUtils;
+import com.testing.mail.connectors.MailConnectors;
+import com.testing.mail.connectors.impl.helper.OutlookHelper;
+import com.testing.mail.connectors.microsoft.data.AttachmentsData;
+import com.testing.mail.connectors.microsoft.data.BatchRequests;
+import com.testing.mail.connectors.microsoft.data.CalendarPermissions;
+import com.testing.mail.connectors.microsoft.data.CalenderValue;
+import com.testing.mail.connectors.microsoft.data.CalenderViewValue;
+import com.testing.mail.connectors.microsoft.data.CalenderViews;
+import com.testing.mail.connectors.microsoft.data.Calenders;
+import com.testing.mail.connectors.microsoft.data.ContactsList;
+import com.testing.mail.connectors.microsoft.data.DomainsList;
+import com.testing.mail.connectors.microsoft.data.EmailAttachMentValue;
+import com.testing.mail.connectors.microsoft.data.EmailAttachMents;
+import com.testing.mail.connectors.microsoft.data.EmailFolders;
+import com.testing.mail.connectors.microsoft.data.EmailFoldersValue;
+import com.testing.mail.connectors.microsoft.data.EmailList;
+import com.testing.mail.connectors.microsoft.data.GroupMembers;
+import com.testing.mail.connectors.microsoft.data.GroupValue;
+import com.testing.mail.connectors.microsoft.data.GroupsList;
+import com.testing.mail.connectors.microsoft.data.MailBoxSettings;
+import com.testing.mail.connectors.microsoft.data.MailRules;
+import com.testing.mail.connectors.microsoft.data.MailValue;
+import com.testing.mail.connectors.microsoft.data.MemberList;
+import com.testing.mail.connectors.microsoft.data.MemberValueVO;
+import com.testing.mail.connectors.microsoft.data.RefreshTokenResult;
+import com.testing.mail.connectors.microsoft.data.Response;
+import com.testing.mail.connectors.microsoft.data.Value;
+import com.testing.mail.constants.Const;
+import com.testing.mail.constants.ExceptionConstants;
+import com.testing.mail.contacts.dao.ContactsFlagInfo;
+import com.testing.mail.contacts.entities.Contacts;
+import com.testing.mail.dao.entities.CalenderFlags;
+import com.testing.mail.dao.entities.ConnectFlags;
+import com.testing.mail.dao.entities.EMailRules;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.dao.entities.EmailUserSettings;
+import com.testing.mail.dao.entities.RateLimitConfigurer;
+import com.testing.mail.dao.entities.UserGroups;
+import com.testing.mail.dao.impl.AppMongoOpsManager;
+import com.testing.mail.exceptions.MailCreationException;
+import com.testing.mail.exceptions.MailMigrationException;
+import com.testing.mail.repo.entities.CalenderInfo;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.Clouds.CLOUD_NAME;
+import com.testing.mail.repo.entities.EmailInfo;
+import com.testing.mail.repo.entities.OAuthKey;
+import com.testing.mail.repo.entities.VendorOAuthCredential;
+import com.testing.mail.repo.impl.CloudsRepoImpl;
+import com.testing.mail.repo.impl.VendorOAuthCredentialImpl;
+import com.testing.mail.utils.ConnectUtils;
+import com.testing.mail.utils.ConvertionUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -570,7 +570,7 @@ public class OutLookMailConnector implements MailConnectors {
 	/**
 	 *For updating the sender EmailId and sent,Received time in the outlook after sending
 	 *<pre>
-	 *Ex : admin@cloudfuze.com to noReplay@cloudfuze.com
+	 *Ex : admin@testing.com to noReplay@testing.com
 	 *</pre>
 	 *@param EmailFlagsInfo - for updating the metadata for Email
 	 *@return EmailInfo - return the updated Email
