@@ -1,4 +1,4 @@
-package com.cloudfuze.mail;
+package com.testing.mail;
 
 import java.util.Date;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
-import com.cloudfuze.mail.repo.entities.ForceExpiredToken;
-import com.cloudfuze.mail.repo.impl.MongoOpsManager;
+import com.testing.mail.repo.entities.ForceExpiredToken;
+import com.testing.mail.repo.impl.MongoOpsManager;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
