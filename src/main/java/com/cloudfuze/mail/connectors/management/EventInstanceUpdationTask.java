@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,24 +12,24 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.BeanUtils;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.connectors.impl.OutLookMailConnector;
-import com.cloudfuze.mail.connectors.microsoft.data.AttachmentsData;
-import com.cloudfuze.mail.constants.Const;
-import com.cloudfuze.mail.dao.entities.CalenderFlags;
-import com.cloudfuze.mail.dao.entities.ConnectFlags;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.repo.entities.CalenderInfo;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.Clouds.CLOUD_NAME;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace.PROCESS;
-import com.cloudfuze.mail.repo.entities.EventInstacesInfo;
-import com.cloudfuze.mail.repo.entities.EventsInfo;
-import com.cloudfuze.mail.service.DBConnectorService;
-import com.cloudfuze.mail.utils.EventRangeUtils;
-import com.cloudfuze.mail.utils.MappingUtils;
-import com.cloudfuze.mail.utils.TimeUtils;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.connectors.impl.OutLookMailConnector;
+import com.testing.mail.connectors.microsoft.data.AttachmentsData;
+import com.testing.mail.constants.Const;
+import com.testing.mail.dao.entities.CalenderFlags;
+import com.testing.mail.dao.entities.ConnectFlags;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.repo.entities.CalenderInfo;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.Clouds.CLOUD_NAME;
+import com.testing.mail.repo.entities.EmailWorkSpace;
+import com.testing.mail.repo.entities.EmailWorkSpace.PROCESS;
+import com.testing.mail.repo.entities.EventInstacesInfo;
+import com.testing.mail.repo.entities.EventsInfo;
+import com.testing.mail.service.DBConnectorService;
+import com.testing.mail.utils.EventRangeUtils;
+import com.testing.mail.utils.MappingUtils;
+import com.testing.mail.utils.TimeUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -124,7 +124,7 @@ public class EventInstanceUpdationTask implements Callable<Object> {
 					CalenderFlags emailFlagsInfo = new CalenderFlags();
 					emailFlagsInfo.setCloudId(emailWorkSpace.getToCloudId());
 					if(instances.getDestId()==null) {
-						instances.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.INSTANCE_CONFLICT);
+						instances.setProcessStatus(com.testing.mail.repo.entities.PROCESS.INSTANCE_CONFLICT);
 						instances.setErrorDescription("DestId Not Found");
 						continue;
 					}
@@ -151,13 +151,13 @@ public class EventInstanceUpdationTask implements Callable<Object> {
 						instances.setICalUId(created.getICalUId());
 						instances.setLargeFile(emailFlagsInfo.isLargeFile());
 						instances.setDestParent(emailInfo.getDestFolderPath());
-						instances.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.INSTANCE_PROCESSED);
+						instances.setProcessStatus(com.testing.mail.repo.entities.PROCESS.INSTANCE_PROCESSED);
 						instances.setErrorDescription("COMPLETED");
 						instances.setUpdatedMetadata(created.getUpdatedMetadata());
 						instances.setDeleted(created.isDeleted());
 					}
 				} catch (Exception e) {
-					instances.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.INSTANCE_CONFLICT);
+					instances.setProcessStatus(com.testing.mail.repo.entities.PROCESS.INSTANCE_CONFLICT);
 					instances.setErrorDescription(ExceptionUtils.getStackTrace(e));
 					instances.setRetryCount(instances.getRetryCount()+1);
 				}
@@ -278,7 +278,7 @@ public class EventInstanceUpdationTask implements Callable<Object> {
 			if(modified) {
 				modifiedInstances.add(instacesInfo);
 			}else {
-				instacesInfo.setProcessStatus(com.cloudfuze.mail.repo.entities.PROCESS.INSTANCE_NOTMODIFIED);
+				instacesInfo.setProcessStatus(com.testing.mail.repo.entities.PROCESS.INSTANCE_NOTMODIFIED);
 				unModifiedInstances.add(instacesInfo);
 			}
 			if(unModifiedInstances.size()>20) {
