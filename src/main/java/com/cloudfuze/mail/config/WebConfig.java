@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.config;
+package com.testing.mail.config;
 
 import java.io.FileInputStream;
 import java.io.IOException;
