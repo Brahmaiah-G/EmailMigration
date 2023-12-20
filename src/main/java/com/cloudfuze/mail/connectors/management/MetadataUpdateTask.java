@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,19 +10,19 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.connectors.scheduler.MetadataUpdateScheduler;
-import com.cloudfuze.mail.constants.Const;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.Clouds.CLOUD_NAME;
-import com.cloudfuze.mail.repo.entities.EmailFolderInfo;
-import com.cloudfuze.mail.repo.entities.EmailInfo;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace.PROCESS;
-import com.cloudfuze.mail.repo.entities.MemberDetails;
-import com.cloudfuze.mail.service.DBConnectorService;
-import com.cloudfuze.mail.utils.MappingUtils;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.connectors.scheduler.MetadataUpdateScheduler;
+import com.testing.mail.constants.Const;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.Clouds.CLOUD_NAME;
+import com.testing.mail.repo.entities.EmailFolderInfo;
+import com.testing.mail.repo.entities.EmailInfo;
+import com.testing.mail.repo.entities.EmailWorkSpace;
+import com.testing.mail.repo.entities.EmailWorkSpace.PROCESS;
+import com.testing.mail.repo.entities.MemberDetails;
+import com.testing.mail.service.DBConnectorService;
+import com.testing.mail.utils.MappingUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,7 +43,7 @@ public class MetadataUpdateTask implements Runnable{
 	EmailWorkSpace emailWorkSpace;
 	EmailInfo emailInfo;
 
-	com.cloudfuze.mail.repo.entities.EmailInfo.PROCESS processStatus = com.cloudfuze.mail.repo.entities.EmailInfo.PROCESS.METADATA_INPROGRESS;
+	com.testing.mail.repo.entities.EmailInfo.PROCESS processStatus = com.testing.mail.repo.entities.EmailInfo.PROCESS.METADATA_INPROGRESS;
 
 	public MetadataUpdateTask(MailServiceFactory mailServiceFactory, DBConnectorService connectorService,
 			EmailWorkSpace emailWorkSpace, EmailInfo emailInfo) {
@@ -153,8 +153,8 @@ public class MetadataUpdateTask implements Runnable{
 					mails.addAll(emailInfo.getToMail());
 					EmailInfo metadata = mailServiceFactory.getConnectorService(toCloud.getCloudName()).updateMetadata(emailFlagsInfo);
 					if(metadata!=null) {
-						if(!com.cloudfuze.mail.repo.entities.EmailInfo.PROCESS.METADATA_CONFLICT.equals(processStatus)) {
-							processStatus = com.cloudfuze.mail.repo.entities.EmailInfo.PROCESS.PROCESSED;
+						if(!com.testing.mail.repo.entities.EmailInfo.PROCESS.METADATA_CONFLICT.equals(processStatus)) {
+							processStatus = com.testing.mail.repo.entities.EmailInfo.PROCESS.PROCESSED;
 						}
 						emailInfo.setUpdatedMetadata(metadata.getUpdatedMetadata()+"==metadata==");
 						emailInfo.setDestId(metadata.getId());
@@ -209,7 +209,7 @@ public class MetadataUpdateTask implements Runnable{
 					}
 				} catch (Exception e) {
 					emailInfo.setErrorDescription(ExceptionUtils.getStackTrace(e));
-					processStatus = com.cloudfuze.mail.repo.entities.EmailInfo.PROCESS.METADATA_CONFLICT;
+					processStatus = com.testing.mail.repo.entities.EmailInfo.PROCESS.METADATA_CONFLICT;
 					emailInfo.setRetryCount(emailInfo.getRetryCount()+1);
 				}
 			}
@@ -220,7 +220,7 @@ public class MetadataUpdateTask implements Runnable{
 			if(e.getMessage().contains("ErrorInvalidMailboxItemId")) {
 				emailInfo.setRetryCount(100);
 			}
-			processStatus = com.cloudfuze.mail.repo.entities.EmailInfo.PROCESS.METADATA_CONFLICT;
+			processStatus = com.testing.mail.repo.entities.EmailInfo.PROCESS.METADATA_CONFLICT;
 		}finally{
 			emailInfo.setProcessStatus(processStatus);
 			connectorService.getWorkSpaceRepoImpl().save(emailWorkSpace);
