@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.config;
+package com.testing.mail.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.cloudfuze.mail.security.JWTAuthorizationFilter;
+import com.testing.mail.security.JWTAuthorizationFilter;
 
 @Configuration
 @EnableWebSecurity
