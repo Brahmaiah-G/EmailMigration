@@ -1,4 +1,4 @@
-package com.cloudfuze.mail.connectors.management;
+package com.testing.mail.connectors.management;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,16 +8,16 @@ import java.util.Map;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.connectors.impl.OutLookMailConnector;
-import com.cloudfuze.mail.constants.Const;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.EmailInfo;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace.PROCESS;
-import com.cloudfuze.mail.repo.entities.MemberDetails;
-import com.cloudfuze.mail.service.DBConnectorService;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.connectors.impl.OutLookMailConnector;
+import com.testing.mail.constants.Const;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.EmailInfo;
+import com.testing.mail.repo.entities.EmailWorkSpace;
+import com.testing.mail.repo.entities.EmailWorkSpace.PROCESS;
+import com.testing.mail.repo.entities.MemberDetails;
+import com.testing.mail.service.DBConnectorService;
 
 import lombok.extern.slf4j.Slf4j;
 
