@@ -1,4 +1,4 @@
-package com.cloudfuze.mail;
+package com.testing.mail;
 
 import java.lang.reflect.Type;
 import java.time.LocalDate;
@@ -16,34 +16,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-import com.cloudfuze.mail.connectors.factory.MailServiceFactory;
-import com.cloudfuze.mail.connectors.impl.GMailConnector;
-import com.cloudfuze.mail.connectors.impl.OutLookMailConnector;
-import com.cloudfuze.mail.connectors.impl.helper.GmailHelper;
-import com.cloudfuze.mail.connectors.management.CloudSaveTask;
-import com.cloudfuze.mail.connectors.management.EmailPurger;
-import com.cloudfuze.mail.connectors.management.GroupsSaveTask;
-import com.cloudfuze.mail.contacts.dao.ContactsFlagInfo;
-import com.cloudfuze.mail.dao.entities.CalenderFlags;
-import com.cloudfuze.mail.dao.entities.EmailFlagsInfo;
-import com.cloudfuze.mail.dao.entities.RateLimitConfigurer;
-import com.cloudfuze.mail.exceptions.MailMigrationException;
-import com.cloudfuze.mail.repo.entities.CalenderInfo;
-import com.cloudfuze.mail.repo.entities.Clouds;
-import com.cloudfuze.mail.repo.entities.Clouds.CLOUD_NAME;
-import com.cloudfuze.mail.repo.entities.EmailInfo;
-import com.cloudfuze.mail.repo.entities.EmailJobDetails;
-import com.cloudfuze.mail.repo.entities.EmailJobDetails.REPORT_STATUS;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace;
-import com.cloudfuze.mail.repo.entities.EmailWorkSpace.PROCESS;
-import com.cloudfuze.mail.repo.entities.VendorOAuthCredential;
-import com.cloudfuze.mail.rest.CustomScriptMgmtService;
-import com.cloudfuze.mail.rest.MailConnectorService;
-import com.cloudfuze.mail.rest.MailMappingConnector;
-import com.cloudfuze.mail.rest.MailMigrationMgmtService;
-import com.cloudfuze.mail.service.DBConnectorService;
-import com.cloudfuze.mail.utils.EventRangeUtils;
-import com.cloudfuze.mail.utils.TimeUtils;
+import com.testing.mail.connectors.factory.MailServiceFactory;
+import com.testing.mail.connectors.impl.GMailConnector;
+import com.testing.mail.connectors.impl.OutLookMailConnector;
+import com.testing.mail.connectors.impl.helper.GmailHelper;
+import com.testing.mail.connectors.management.CloudSaveTask;
+import com.testing.mail.connectors.management.EmailPurger;
+import com.testing.mail.connectors.management.GroupsSaveTask;
+import com.testing.mail.contacts.dao.ContactsFlagInfo;
+import com.testing.mail.dao.entities.CalenderFlags;
+import com.testing.mail.dao.entities.EmailFlagsInfo;
+import com.testing.mail.dao.entities.RateLimitConfigurer;
+import com.testing.mail.exceptions.MailMigrationException;
+import com.testing.mail.repo.entities.CalenderInfo;
+import com.testing.mail.repo.entities.Clouds;
+import com.testing.mail.repo.entities.Clouds.CLOUD_NAME;
+import com.testing.mail.repo.entities.EmailInfo;
+import com.testing.mail.repo.entities.EmailJobDetails;
+import com.testing.mail.repo.entities.EmailJobDetails.REPORT_STATUS;
+import com.testing.mail.repo.entities.EmailWorkSpace;
+import com.testing.mail.repo.entities.EmailWorkSpace.PROCESS;
+import com.testing.mail.repo.entities.VendorOAuthCredential;
+import com.testing.mail.rest.CustomScriptMgmtService;
+import com.testing.mail.rest.MailConnectorService;
+import com.testing.mail.rest.MailMappingConnector;
+import com.testing.mail.rest.MailMigrationMgmtService;
+import com.testing.mail.service.DBConnectorService;
+import com.testing.mail.utils.EventRangeUtils;
+import com.testing.mail.utils.TimeUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mongodb.client.AggregateIterable;
@@ -123,7 +123,7 @@ public class ClouFuzeEmailMigrationTest {
 		EmailWorkSpace emailWorkSpaces = new EmailWorkSpace();
 		emailWorkSpaces.setFromCloud(CLOUD_NAME.GMAIL);
 		emailWorkSpaces.setToCloud(CLOUD_NAME.OUTLOOK);
-		emailWorkSpaces.setFromMailId("dan@cloudfuze.us");
+		emailWorkSpaces.setFromMailId("dan@testing.us");
 		emailWorkSpaces.setFromFolderId("/");
 		emailWorkSpaces.setToMailId("dan@gajha.com");
 		emailWorkSpaces.setOwnerEmailId("nagesh");
@@ -242,7 +242,7 @@ public class ClouFuzeEmailMigrationTest {
 		CalenderFlags emailFlagsInfo = new CalenderFlags();
 		emailFlagsInfo.setCloudId("653a532e83e0ac5c1a475335");
 		emailFlagsInfo.setId("0it0taho5vgd778nvliov0dncs");
-		emailFlagsInfo.setCalendar("harry@cloudfuze.us");
+		emailFlagsInfo.setCalendar("harry@testing.us");
 		List<CalenderInfo> sourceInfos = gMailConnector.getEventInstances(emailFlagsInfo);
 		System.out.println("**** Destination total *****"+sourceInfos.size());
 
@@ -313,7 +313,7 @@ public class ClouFuzeEmailMigrationTest {
 
 	@Test
 	void getAccessToken() {
-		String authCode ="0.AVAAENLmDZSsHUapNU9sEFI5pJ-2iwb6UgRBvJjaQQU8BA9QAJw.AgABAAIAAAAtyolDObpQQ5VtlI4uGjEPAgDs_wUA9P9jRkdzsNm-vaA8Azc8R6V0R1thsMjWVIR51ZiEJbn2NGbz9na0N4Y1r2s7kl0MdDLZfFkthCXsdKteHBNayAM8JitG3QJvuKPEwOWann7o3nmJkisUnqWl18e9Lq3kxVFh0B2GB7xtHpwhJM9CSMSdIIhAkePJFNQ0OdydDgPJGF7rxLmAmASUa72SgzRWJ7ylamh78s6avP41IgrEjn5NtMzqo-ZCRkc_rfpxihELz1-arnGlrYk53ReNSCZQZLb8hGoioZyHB72nhtQoCW7rGA3d1hE-F6G9JPuoYwEpErYLWMQuxlF0KrdBwyqJYPvraim2c_48XXoa97LiMJagdiAwDk76_OUmBIpzmvwFk0wlRqgePm7g4hvXxO4wR9-NcK-aoOWzFTle5_chhX-mz8vxdhJAmrbhZ__cln5IMIWU6aphwpJhXK4fVQMxnFPy-D9fsZ7n38cnFdGQfS-5yr9Q6_WsnN6OF2baP7k9GydumrVBi68nMkimR2s7aH80kCTh0YadEmX5Kn-3V-xGxYD2GYQWb-plp9E4bPa45GIDtyCiA02X86SkCimlaLqC9xWxXHiTrzK4FlyqbyKvZpqlwtLHwLeSkNKbxri4QWozIDQC8rz_uoB6sdCL_nf7Qp6y3nbelNuf6BBlcSSPF4Rf1r_0Ubdo8HHCCI_PVaokcRRioxC2n4aeV9-7y9b1__URKCx_jxFLsjxt2j1rXD5NQMmBi3SizZ60a4RPsTDbW9bgMfUms27MJG9OZm1DtetS9Si-5FS0v-mmVU2I_7_U29-f5I8xqveyXl4K8ryBxQmcXpLsnEeJ5wECSdfMOhFHeb66FWLQqzsHtUKqdBN9Eduz809a6Hks0Ive6hgTzcVCsxWf-Dgfbv8Vs02yF49JToZRckki7nDogMjGBIi9aURUJpQEBXPe-iPnlDN7Mjl8P52ROHHM2mn2nPlomihIWToyKuX9P3q6qyeA_lS93dO4vyYh6tc2Lh1JGScRKiNvzBRO2hY9QhAROzMppVUbJhf4Numzu7zvtmKKKtu7206iSa_9eqS-N3f5v-7u706cYlw11RNT_2bhcHlnXQpIt5KmSI_JfgJeJTVZk0JtApI1rFer45jm2DFUFjH0lhklv6OUcVWuAspRhrgLK1-Q3WcjUL66V2Ujpj1mJhZp_HjwxHw_x0VGsfjHd046_3RMN5u8Xskp9FRCx_DoEhkVr-RLxdKTbCdM2l2wZIhvj8MTmjrnWWcUBfXicIt06QEeZ3EhBGeWjQQ511RJeUiM1CiiBSBEUoE-HCEAuYpmJo1MihRvqNd4uTTMdCUVWDAGY099kVDjXG8GxtzYoANYAp0IsSye&state=OUTLOOK%606391999bc2dcc733b6c77f96%60https%3a%2f%2fstaging.cloudfuze.com%2f&session_state=e0d251be-0b33-475b-b3b1-3a39b1433e7b";
+		String authCode ="0.AVAAENLmDZSsHUapNU9sEFI5pJ-2iwb6UgRBvJjaQQU8BA9QAJw.AgABAAIAAAAtyolDObpQQ5VtlI4uGjEPAgDs_wUA9P9jRkdzsNm-vaA8Azc8R6V0R1thsMjWVIR51ZiEJbn2NGbz9na0N4Y1r2s7kl0MdDLZfFkthCXsdKteHBNayAM8JitG3QJvuKPEwOWann7o3nmJkisUnqWl18e9Lq3kxVFh0B2GB7xtHpwhJM9CSMSdIIhAkePJFNQ0OdydDgPJGF7rxLmAmASUa72SgzRWJ7ylamh78s6avP41IgrEjn5NtMzqo-ZCRkc_rfpxihELz1-arnGlrYk53ReNSCZQZLb8hGoioZyHB72nhtQoCW7rGA3d1hE-F6G9JPuoYwEpErYLWMQuxlF0KrdBwyqJYPvraim2c_48XXoa97LiMJagdiAwDk76_OUmBIpzmvwFk0wlRqgePm7g4hvXxO4wR9-NcK-aoOWzFTle5_chhX-mz8vxdhJAmrbhZ__cln5IMIWU6aphwpJhXK4fVQMxnFPy-D9fsZ7n38cnFdGQfS-5yr9Q6_WsnN6OF2baP7k9GydumrVBi68nMkimR2s7aH80kCTh0YadEmX5Kn-3V-xGxYD2GYQWb-plp9E4bPa45GIDtyCiA02X86SkCimlaLqC9xWxXHiTrzK4FlyqbyKvZpqlwtLHwLeSkNKbxri4QWozIDQC8rz_uoB6sdCL_nf7Qp6y3nbelNuf6BBlcSSPF4Rf1r_0Ubdo8HHCCI_PVaokcRRioxC2n4aeV9-7y9b1__URKCx_jxFLsjxt2j1rXD5NQMmBi3SizZ60a4RPsTDbW9bgMfUms27MJG9OZm1DtetS9Si-5FS0v-mmVU2I_7_U29-f5I8xqveyXl4K8ryBxQmcXpLsnEeJ5wECSdfMOhFHeb66FWLQqzsHtUKqdBN9Eduz809a6Hks0Ive6hgTzcVCsxWf-Dgfbv8Vs02yF49JToZRckki7nDogMjGBIi9aURUJpQEBXPe-iPnlDN7Mjl8P52ROHHM2mn2nPlomihIWToyKuX9P3q6qyeA_lS93dO4vyYh6tc2Lh1JGScRKiNvzBRO2hY9QhAROzMppVUbJhf4Numzu7zvtmKKKtu7206iSa_9eqS-N3f5v-7u706cYlw11RNT_2bhcHlnXQpIt5KmSI_JfgJeJTVZk0JtApI1rFer45jm2DFUFjH0lhklv6OUcVWuAspRhrgLK1-Q3WcjUL66V2Ujpj1mJhZp_HjwxHw_x0VGsfjHd046_3RMN5u8Xskp9FRCx_DoEhkVr-RLxdKTbCdM2l2wZIhvj8MTmjrnWWcUBfXicIt06QEeZ3EhBGeWjQQ511RJeUiM1CiiBSBEUoE-HCEAuYpmJo1MihRvqNd4uTTMdCUVWDAGY099kVDjXG8GxtzYoANYAp0IsSye&state=OUTLOOK%606391999bc2dcc733b6c77f96%60https%3a%2f%2fstaging.testing.com%2f&session_state=e0d251be-0b33-475b-b3b1-3a39b1433e7b";
 		mailMappingConnector.getAccessToken(CLOUD_NAME.OUTLOOK, "", authCode);
 	}
 
@@ -358,7 +358,7 @@ public class ClouFuzeEmailMigrationTest {
 	void testEventInstances() {
 		CalenderFlags emailFlagsInfo = new CalenderFlags();
 		emailFlagsInfo.setCloudId("655749a27a260c4f2272fdc6");
-		emailFlagsInfo.setCalendar("harry@cloudfuze.us");
+		emailFlagsInfo.setCalendar("harry@testing.us");
 		emailFlagsInfo.setId("02ob3btv0k8rqct26pg397qns3");
 		List<CalenderInfo> rules = gMailConnector.getEventInstances(emailFlagsInfo);
 	}
@@ -372,8 +372,8 @@ public class ClouFuzeEmailMigrationTest {
 		long count = 0;
 		while(true) {
 			emailFlagsInfo.setCloudId("653a532e83e0ac5c1a475331");
-			emailFlagsInfo.setCalendar("harry@cloudfuze.us");
-			emailFlagsInfo.setId("alex@cloudfuze.us");
+			emailFlagsInfo.setCalendar("harry@testing.us");
+			emailFlagsInfo.setId("alex@testing.us");
 			List<CalenderInfo> rules = gMailConnector.getCalendarEvents(emailFlagsInfo);
 			if(rules.isEmpty()) {
 				System.out.println("No Events");
