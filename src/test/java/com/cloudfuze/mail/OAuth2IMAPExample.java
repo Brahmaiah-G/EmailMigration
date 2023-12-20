@@ -1,4 +1,4 @@
-package com.cloudfuze.mail;
+package com.testing.mail;
 
 import java.security.GeneralSecurityException;
 import java.util.Properties;
