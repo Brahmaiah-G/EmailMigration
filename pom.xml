@@ -12,17 +12,12 @@
 	</parent>
 
 	<!-- Project details -->
-	<groupId>com.cloudfuze.mail</groupId>
-	<artifactId>CloudFuzeEmailMigration</artifactId>
+	<groupId>com.testing.mail</groupId>
+	<artifactId>TestingEmailMigration</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
 	<name>email</name>
 	<description>CloudFuze EmailMigration</description>
-
-	<!-- Organization Details -->
-	<organization>
-		<name>CloudFuze</name>
-	</organization>
 
 	<!-- Additional properties -->
 	<properties>
